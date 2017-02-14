@@ -1,1 +1,1 @@
-Implementacja pakietu klas realizujących mapowanie O-R dowolnego modelu dziedziny w technologii .Net. Motor bazy danych – MS SQL.
+Implementacja pakietu klas realizujących mapowanie O-R dowolnego modelu dziedziny w technologii .Net. Motor bazy danych – MS SQL. Umożliwia ona pobieranie i automatyczne mapowanie danych (oferuje możliwość konstruowania wyrażeń), a także realizowanie transakcji, w tym dla dowolnych relacji między tabelami. Pozwala także na automatyczne tworzenie nowych tabel oraz dostarcza różne sposoby na obsługę dziedziczenia (single table oraz class table).
