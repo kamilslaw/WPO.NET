@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/bootstrap-theme")
+</head>
+<body>
+    @Html.Partial("_Menu")
+    <div>
+        <div class="container">
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-info">
+                    @TempData["Message"]
+                </div>
+            }
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

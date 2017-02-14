@@ -1,0 +1,9 @@
+﻿@model ProductRowModel
+
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td class="text-right">@((Model.Price ?? 0).ToString("N2"))</tdclass="text-right">
+    <td class="text-center"><a href="~/Home/EditProduct/@Model.Id" type="button" class="btn btn-link">Edit</a></tdclass="text-right">
+    <td class="text-center"><a href="~/Home/DeleteProduct/@Model.Id" type="button" class="btn btn-danger">Delete</button></tdclass="text-right">
+</tr>

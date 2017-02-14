@@ -1,0 +1,1 @@
+Implementacja pakietu klas realizujących mapowanie O-R dowolnego modelu dziedziny w technologii .Net. Motor bazy danych – MS SQL.

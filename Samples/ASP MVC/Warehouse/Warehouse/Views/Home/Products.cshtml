@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProductRowModel>
+
+@using (Html.BeginForm("Products", "Home", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        @Html.TextBox("phrase", (string)ViewBag.Phrase, new { @class = "form-control" })
+        @Html.Hidden("page")
+        <input type="submit" class="btn btn-info" value="Search" />
+
+        <div class="form-group">
+            <a href=@Url.Action("Products", new { page = ViewBag.Page, phrase = ViewBag.Phrase, sort = "nameAsc" }) class="btn btn-link btn-lg glyphicon glyphicon-sort-by-alphabet" role="button"></a>
+        </div>
+        <div class="form-group">
+            <a href=@Url.Action("Products", new { page = ViewBag.Page, phrase = ViewBag.Phrase, sort = "nameDesc" }) class="btn btn-link btn-lg glyphicon glyphicon-sort-by-alphabet-alt" role="button"></a>
+        </div>
+        <div class="form-group">
+            <a href=@Url.Action("Products", new { page = ViewBag.Page, phrase = ViewBag.Phrase, sort = "priceAsc" }) class="btn btn-link btn-lg glyphicon glyphicon-sort-by-order" role="button"></a>
+        </div>
+        <div class="form-group">
+            <a href=@Url.Action("Products", new { page = ViewBag.Page, phrase = ViewBag.Phrase, sort = "priceDesc" }) class="btn btn-link btn-lg glyphicon glyphicon-sort-by-order-alt" role="button"></a>
+        </div>
+    </div>
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th class="text-right">Price</th>
+            <th class="text-center">Edit</th>
+            <th class="text-center">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            foreach (var product in Model)
+            {
+                @Html.Partial("_ProductRow", product)
+            }
+        }
+
+    </tbody>
+</table>
+
+@if (ViewBag.Page > 1)
+{
+    <a href=@Url.Action("Products", new { page = ViewBag.Page-1, phrase = ViewBag.Phrase, sort = ViewBag.Sort }) class="btn btn-default" role="button">Previous Page</a>
+}
+@if (Model != null && Model.Any())
+{
+    <a href=@Url.Action("Products", new { page = ViewBag.Page+1, phrase = ViewBag.Phrase, sort = ViewBag.Sort })  class="btn btn-default" role="button">Next Page</a>
+}
