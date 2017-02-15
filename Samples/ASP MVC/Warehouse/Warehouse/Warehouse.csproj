@@ -165,6 +165,8 @@
     <Content Include="scripts\jquery-3.1.1.min.js" />
     <Content Include="scripts\jquery-3.1.1.slim.js" />
     <Content Include="scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="scripts\knockout-3.4.1.debug.js" />
+    <Content Include="scripts\knockout-3.4.1.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
