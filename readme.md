@@ -155,7 +155,7 @@ public static class DBManager {
 	public static Session Session { get; set; }
 
 	public static void Initialize()	{
-		connection = new MSSqlConnection();
+        connection = new MSSqlConnection();
 		Manager = WPOManager.GetInstance();
 		Session = Manager.GetSession(connection, connectionString);
 	}
