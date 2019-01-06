@@ -1,5 +1,6 @@
 
-ORM Framework for .NET Framework 4.6 written in C#.  Basic features:
+## ORM Framework for .NET Framework 4.6 written in C#
+Basic features:
  - MS SQL support
  - Relations to objects mapping:
 	 - Basic queries constructing
