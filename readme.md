@@ -119,10 +119,11 @@ public class Teacher : Person {
 }
 ```
 is an equivalent to
+
 | Student       | Teacher  |
-| ------------- | ------   |
+| ------------- | -------- |
 | Id *[PK]* | Id *[PK]* |
-| Name | Name |
+| Name | Name  |
 | Age | Salary |
 
 #### Class table
