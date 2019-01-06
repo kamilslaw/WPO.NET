@@ -119,9 +119,9 @@ public class Teacher : Person {
 }
 ```
 is an equivalent to
-| Student | Teacher |
-|--|--|
-| Id [PK] | Id [PK] |
+| Student       | Teacher  |
+| ------------- | ------   |
+| Id *[PK]* | Id *[PK]* |
 | Name | Name |
 | Age | Salary |
 
@@ -137,9 +137,10 @@ public class Teacher : Person {
 }
 ```
 is an equivalent to
-| Person | Student | Teacher |
-|--|--|--|
-| Id [PK] | Id [PK/FK] | Id [PK/FK] |
+
+| Person        | Student       | Teacher  |
+| ------------- | ------------- | ------   |
+| Id *[PK]* | Id *[PK/FK]* | Id *[PK/FK]* |
 | Name | Age | Salary |
 
 ## Configuration
