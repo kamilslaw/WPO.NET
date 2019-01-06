@@ -176,7 +176,7 @@ session.Rollback()  // remove objects which are not commited yet, undo changes i
 ```
 Sample transaction:
 ```csharp
-var = wpoManager.GetQuery<Product>(session).GetObjectByKey(44);
+var product = wpoManager.GetQuery<Product>(session).GetObjectByKey(44);
 product.Price *= 2;
 var promotion = new Promotion(session) { Id = 133, Name = "Holidays", Start = DateTime.UtcNow };
 var prevPromotion = wpoManager.GetQuery<Promotion>(session).OrderBy("Start").FirstOrDefault();
