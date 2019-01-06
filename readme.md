@@ -53,16 +53,16 @@ List<Product> products = wpoManager.GetQuery<Product>(session)
 Obtaining [sequences](https://www.sqlshack.com/sequence-objects-in-sql-server/) values (which can be used as primary keys values)
 ```csharp
 var sequences = new Dictionary<string, int>() {
-	["sek1"] = 3,
-	["sek2"] = 2
+    ["sek1"] = 3,
+    ["sek2"] = 2
 };  // we want to get 3 next values of "sek1" & 2 values of "sek2"
 List<ExecuteResult<long> result = connection.GetSequences(sequences).ToList();
 /* Sample result:
-   [["sek1"] = 1347,
-    ["sek1"] = 1348,
-    ["sek1"] = 1349,
-    ["sek2"] = 44,
-    ["sek2"] = 45]
+    [["sek1"] = 1347,
+     ["sek1"] = 1348,
+     ["sek1"] = 1349,
+     ["sek2"] = 44,
+     ["sek2"] = 45]
 */
 ```
 
@@ -70,23 +70,23 @@ List<ExecuteResult<long> result = connection.GetSequences(sequences).ToList();
 ```csharp
 [WPOTable]
 public class Car : WPOBaseObject {
-	public Car(Session s) : base(s) { }
-	[WPOPrimaryKey]
-	public int Id { get; set; }
-	[WPOColumn]
-	public string Name { get; set; }
-	public WPOCollection<Wheel> Wheels { get; set; }
+    public Car(Session s) : base(s) { }
+    [WPOPrimaryKey]
+    public int Id { get; set; }
+    [WPOColumn]
+    public string Name { get; set; }
+    public WPOCollection<Wheel> Wheels { get; set; }
 }
 
 [WPOTable]
 public class Wheel : WPOBaseObject {
-	public Wheel(Session s) : base(s) { }
-	[WPOPrimaryKey]
-	public int Id { get; set; }
-	[WPORelation(RelationType.OneToMany, "id", "carid")]  // relation type, column from connected table & column name
-	public Car Parent { get; set; }  
-	[WPORelation(RelationType.OneToOne, "id", "netxwheelid")]
-	public Wheel Other { get; set; }
+    public Wheel(Session s) : base(s) { }
+    [WPOPrimaryKey]
+    public int Id { get; set; }
+    [WPORelation(RelationType.OneToMany, "id", "carid")]  // relation type, column from connected table & column name
+    public Car Parent { get; set; }  
+    [WPORelation(RelationType.OneToOne, "id", "netxwheelid")]
+    public Wheel Other { get; set; }
 }
 
 // ...
@@ -105,17 +105,17 @@ Assert.IsNotNull(wheel.Other.Parent);
 ```csharp
 // ALL UNRELATES ATTRIBUTES & CONSTRUCTOR HAVE BEEN OMITTED FOR READABILITY
 public class Person : WPOBaseObject {
-	public int Id { get; set; }
-	public string Name { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
 }
 ```
 #### Single table
 ```csharp
 public class Student : Person {
-	public int Age { get; set; }
+    public int Age { get; set; }
 }
 public class Teacher : Person {
-	public decimal Salary { get; set; }
+    public decimal Salary { get; set; }
 }
 ```
 is an equivalent to
@@ -130,11 +130,11 @@ is an equivalent to
 ```csharp
 [WPOTable(Inheritance = InheritanceType.ClassTable)]
 public class Student : Person {
-	public int Age { get; set; }
+    public int Age { get; set; }
 }  
 [WPOTable(Inheritance = InheritanceType.ClassTable)]
 public class Teacher : Person {
-	public decimal Salary { get; set; }
+    public decimal Salary { get; set; }
 }
 ```
 is an equivalent to
@@ -148,17 +148,17 @@ is an equivalent to
 **WPOManager** is the singleton which manages sessions and allows us to create queries. It is responsible for sessions life cycle, it implements *IDisposable*. Sample class which handles *WPOManager* and creates 1 session:
 ```csharp
 public static class DBManager {
-	private static MSSqlConnection connection;
-	private static string connectionString = "...";
+    private static MSSqlConnection connection;
+    private static string connectionString = "...";
 
-	public static WPOManager Manager { get; set; }
-	public static Session Session { get; set; }
+    public static WPOManager Manager { get; set; }
+    public static Session Session { get; set; }
 
-	public static void Initialize()	{
+    public static void Initialize()	{
         connection = new MSSqlConnection();
-		Manager = WPOManager.GetInstance();
-		Session = Manager.GetSession(connection, connectionString);
-	}
+        Manager = WPOManager.GetInstance();
+        Session = Manager.GetSession(connection, connectionString);
+    }
 }
 
 // ...
